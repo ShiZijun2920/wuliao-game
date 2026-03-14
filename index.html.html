@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>🎮 纯净游戏岛 · 无广告导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background: #0e121f;
+            color: #eef2f8;
+            padding: 16px 14px 40px;
+        }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin: 10px 0 25px;
+        }
+        .title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6dd5ed, #9b9bff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+        .sub {
+            color: #9aaec9;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+        
+        .search-box {
+            background: #1b2333;
+            border-radius: 50px;
+            padding: 14px 20px;
+            margin: 20px 0 25px;
+            border: 1px solid #2f3b57;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .search-box input {
+            background: transparent;
+            border: none;
+            color: white;
+            width: 100%;
+            font-size: 1rem;
+            outline: none;
+        }
+        .search-box input::placeholder {
+            color: #5d7199;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 40px 0 15px 5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 6px solid #6dd5ed;
+            padding-left: 15px;
+        }
+        .section-tag {
+            background: #27324f;
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #b4ccff;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+        
+        .card {
+            background: #17212f;
+            border-radius: 24px;
+            padding: 22px 18px;
+            border: 1px solid #2c3b58;
+            cursor: pointer;
+            transition: 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .card:hover {
+            background: #1e2b3f;
+            transform: translateY(-4px);
+            border-color: #6dd5ed;
+            box-shadow: 0 8px 12px rgba(0,0,0,0.4);
+        }
+        .card-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #c9e0ff;
+        }
+        .card-desc {
+            color: #a5b9da;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 4px 0;
+        }
+        .card-tag {
+            background: #26324b;
+            color: #b2ceff;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            display: inline-block;
+            width: fit-content;
+            margin-top: 6px;
+        }
+        
+        .ad-spot {
+            background: #101624;
+            border: 2px dashed #3f5177;
+            border-radius: 24px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+            color: #6a7daa;
+            font-size: 0.95rem;
+        }
+        
+        .footer {
+            margin-top: 60px;
+            padding: 20px 0;
+            border-top: 1px solid #28324b;
+            text-align: center;
+            color: #5b6f9b;
+            font-size: 0.85rem;
+        }
+        .footer a {
+            color: #93adde;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .disclaimer {
+            font-size: 0.75rem;
+            color: #415279;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="title">🎮 纯净游戏岛</div>
+        <div class="sub">精选 · 无广告 · 即点即玩</div>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍 搜索游戏或工具...">
+    </div>
+
+    <div class="ad-spot">
+        📢 Google AdSense 广告位 (等你流量上来再启用)
+    </div>
+
+    <div class="section-title">
+        🏎️ 赛车竞速 <span class="section-tag">6个</span>
+    </div>
+    <div class="card-grid" id="racingGrid"></div>
+
+    <div class="ad-spot">
+        📢 商务合作 · 加微信: your_wechat_id
+    </div>
+
+    <div class="section-title">
+        ♟️ 棋类对战 <span class="section-tag">6个</span>
+    </div>
+    <div class="card-grid" id="chessGrid"></div>
+
+    <div class="section-title">
+        🧠 益智解谜 <span class="section-tag">6个</span>
+    </div>
+    <div class="card-grid" id="puzzleGrid"></div>
+
+    <div class="section-title">
+        🎨 创意涂鸦 · 解压 <span class="section-tag">6个</span>
+    </div>
+    <div class="card-grid" id="creativeGrid"></div>
+
+    <div class="section-title">
+        🌍 虚拟旅行 · 科普 <span class="section-tag">5个</span>
+    </div>
+    <div class="card-grid" id="travelGrid"></div>
+
+    <div class="footer">
+        <div>
+            <a href="#">关于</a> · <a href="#">联系</a> · <a href="#">隐私</a> · <a href="#">免责</a>
+        </div>
+        <div style="margin: 12px 0;">© 纯净游戏岛 · 所有链接定期检查</div>
+        <div class="disclaimer">
+            ⚠️ 本站仅为导航，所有内容版权归原作者所有。跳转后请自行甄别。
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ---------- 29个纯净网站数据（已替换两个失效网站）----------
+        const sites = [
+            // 赛车 (6)
+            { cat: 'racing', name: 'Traffic Mania', desc: '交通塞车解压，3D画面，纯无害', tag: '🚦 解压', url: 'https://poki.com/zh/g/traffic-mania-3d' },
+            { cat: 'racing', name: 'Drift Hunters', desc: '3D漂移模拟，可改装', tag: '🚗 漂移', url: 'https://drift-hunters.com' },
+            { cat: 'racing', name: 'CrazyGames 赛车', desc: '国际大站，HTML5流畅', tag: '🏁 赛车合集', url: 'https://www.crazygames.com/racing-games' },
+            { cat: 'racing', name: 'Poki 赛车', desc: '手机友好，即点即玩', tag: '📱 手机畅玩', url: 'https://poki.com/zh/g/racing' },
+            { cat: 'racing', name: 'Madalin Stunt Cars', desc: '3D超跑，多人同屏', tag: '🏎️ 超跑', url: 'https://www.crazygames.com/game/madalin-stunt-cars-2' },
+            { cat: 'racing', name: 'Traffic Jam 3D', desc: '塞车解压，魔性', tag: '🚦 解压', url: 'https://poki.com/zh/g/traffic-jam-3d' },
+            
+            // 棋类 (6)
+            { cat: 'chess', name: 'Chess.com', desc: '全球最大国际象棋站', tag: '👑 国际象棋', url: 'https://www.chess.com' },
+            { cat: 'chess', name: 'Lichess', desc: '开源免费，无广告', tag: '✨ 纯净对弈', url: 'https://lichess.org' },
+            { cat: 'chess', name: 'PlayOK', desc: '全球真人对弈', tag: '🌍 五子棋/围棋', url: 'https://www.playok.com/zh/' },
+            { cat: 'chess', name: 'Paper Games', desc: '联机五子棋/跳棋', tag: '📄 清新界面', url: 'https://papergames.io/zh/' },
+            { cat: 'chess', name: 'Green Felt', desc: '极简单人纸牌', tag: '🃏 蜘蛛纸牌', url: 'https://greenfelt.net' },
+            { cat: 'chess', name: 'CardGames.io', desc: '空当接龙/纸牌', tag: '🃏 经典纸牌', url: 'https://cardgames.io' },
+            
+            // 益智 (6) - 已替换两个失效网站
+            { cat: 'puzzle', name: '2048', desc: '数字合成经典', tag: '🔢 原版', url: 'https://play2048.co' },
+            { cat: 'puzzle', name: '谷歌扫雷', desc: '谷歌官方版', tag: '💣 经典', url: 'https://www.google.com/logos/2010/minesweeper/' },
+            { cat: 'puzzle', name: '俄罗斯方块', desc: 'Tetris官方', tag: '🧩 官方正版', url: 'https://tetris.com/play-tetris' },
+            { cat: 'puzzle', name: 'Sudoku.com', desc: '数独，每日更新', tag: '🔢 每日挑战', url: 'https://sudoku.com' },
+            { cat: 'puzzle', name: 'Brain Training Games', desc: '记忆/逻辑/反应训练', tag: '🧠 脑力训练', url: 'https://www.crazygames.com/t/brain' },
+            { cat: 'puzzle', name: 'Hidden Object Games', desc: '找物品/解谜/寻物', tag: '🔍 找茬解谜', url: 'https://poki.com/en/g/hidden-object' },
+            
+            // 创意 (6)
+            { cat: 'creative', name: 'Weave Silk', desc: '丝绸涂鸦，配色治愈', tag: '🎨 治愈系', url: 'https://weavesilk.com' },
+            { cat: 'creative', name: 'This Is Sand', desc: '在线堆沙，换色堆叠', tag: '🏖️ 解压', url: 'https://thisissand.com' },
+            { cat: 'creative', name: 'Picrew', desc: '日系捏头像', tag: '🎭 捏脸', url: 'https://picrew.me' },
+            { cat: 'creative', name: 'Aggie.io', desc: '多人协作涂鸦', tag: '👥 一起画', url: 'https://aggie.io' },
+            { cat: 'creative', name: 'Kleki', desc: '极简在线绘画', tag: '✏️ 随手画', url: 'https://kleki.com' },
+            { cat: 'creative', name: 'Sketchpad', desc: '功能齐全的绘图工具', tag: '🎨 专业', url: 'https://sketchpad.app' },
+            
+            // 旅行 (5)
+            { cat: 'travel', name: 'Zoom Earth', desc: '实时卫星云图', tag: '🛰️ 卫星', url: 'https://zoom.earth' },
+            { cat: 'travel', name: 'Radio Garden', desc: '全球电台', tag: '📻 听世界', url: 'https://radio.garden' },
+            { cat: 'travel', name: 'WindowSwap', desc: '看世界各地的窗外', tag: '🪟 治愈', url: 'https://windowswap.com' },
+            { cat: 'travel', name: 'Earth 3D', desc: '3D地球探索', tag: '🌍 3D地球', url: 'https://earth3dmap.com' },
+            { cat: 'travel', name: 'NASA 每日一图', desc: '天文科普', tag: '🌌 每日天文', url: 'https://apod.nasa.gov' }
+        ];
+
+        const grids = {
+            racing: document.getElementById('racingGrid'),
+            chess: document.getElementById('chessGrid'),
+            puzzle: document.getElementById('puzzleGrid'),
+            creative: document.getElementById('creativeGrid'),
+            travel: document.getElementById('travelGrid')
+        };
+
+        function clearGrids() {
+            for (let g in grids) grids[g].innerHTML = '';
+        }
+
+        function render(filter = '') {
+            clearGrids();
+            const lowerFilter = filter.toLowerCase().trim();
+
+            sites.forEach(s => {
+                if (lowerFilter && !s.name.toLowerCase().includes(lowerFilter) && !s.desc.toLowerCase().includes(lowerFilter)) {
+                    return;
+                }
+
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.onclick = () => window.open(s.url, '_blank');
+
+                card.innerHTML = `
+                    <div class="card-name">${s.name}</div>
+                    <div class="card-desc">${s.desc}</div>
+                    <div class="card-tag">${s.tag}</div>
+                `;
+
+                if (grids[s.cat]) grids[s.cat].appendChild(card);
+            });
+
+            for (let g in grids) {
+                if (grids[g].children.length === 0) {
+                    grids[g].innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px; color:#5a6e9a;">没有找到匹配的内容～</div>`;
+                }
+            }
+        }
+
+        render('');
+        document.getElementById('searchInput').addEventListener('input', (e) => render(e.target.value));
+    })();
+</script>
+</body>
+</html>
